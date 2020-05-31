@@ -7,7 +7,9 @@
 
         <div class="middle">
             <h2 class="middle__result"> {{ result }} </h2>
-            <router-link class="middle__btn" :to="{ name: 'Match'}">play again</router-link>
+            <div class="align-center">
+                <router-link class="middle__btn" :to="{ name: 'Match'}">play again</router-link>
+            </div>
         </div>
 
         <div class="side computer-side">
@@ -75,9 +77,7 @@ export default {
          } else if ( val == "You lose") {
             document.querySelector('.player-side').classList.remove('victory')
             document.querySelector('.computer-side').classList.add('victory')
-            console.log('you lose')
          } else if ( val == "Draw" ){
-             console.log('it s a draw')
          }
         },
     }
@@ -92,6 +92,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     flex-flow: row wrap;
+    width: 100%;
     max-width: 800px;
     margin: 100px auto 0;
 
@@ -100,6 +101,7 @@ export default {
     }
 
     .coin {
+        pointer-events: none;
         width: 250px;
         height: 250px;
 
@@ -111,28 +113,29 @@ export default {
 
     .side {
         position: relative;
+
         &__title {
             margin-bottom: 100px;
             text-transform: uppercase;
+            font-size: 20px;
             letter-spacing: 1px;
             text-align: center;
         }
 
-        .victory {
-            .coin {
-                .flag {
-                    position: absolute;
-                    z-index: -1;
-                    width: 150%;
-                    height: 150%;
-                    background: red;
-                }
+        &.victory {
+            .victory-ring {
+                transition-delay: .5s;
+                opacity: 1;
             }
         }
     }
 
     .middle {
         margin-top: 100px;
+
+        .align-center {
+            text-align: center;
+        }
 
         &__result {
             margin-bottom: 20px;
@@ -152,6 +155,47 @@ export default {
             padding: 10px 30px;
             border-radius: 8px;
             text-decoration: none;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        position: relative;
+        margin-top: 100px;
+
+        .side {
+            width: 50%;
+
+            &__title {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        .coin {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto;
+
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .middle {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, 50%);
+
+            &__result {
+                font-size: 60px;
+            }
+
+            &__btn {
+                font-size: 20px;
+            }
         }
     }
 }

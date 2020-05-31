@@ -69,8 +69,22 @@ export default {
         position: absolute;
         top: 40px;
         right: 20px;
+        width: 20px;
+        height: 20px;
         background: none;
         border: 0;
+        cursor: pointer;
+        transition: transform .2s;
+        transform-origin: center center;
+
+        &:hover {
+            transform: rotate(180deg);
+        }
+
+        &:focus {
+            outline: none;
+            transform: scale(1.1)
+        }
     }
 
     &.is-open {

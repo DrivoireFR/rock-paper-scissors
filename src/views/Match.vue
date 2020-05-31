@@ -73,5 +73,10 @@ export default {
         transform: translate(-50%, 0);
       }
     }
+
+    @media screen and (max-width: 700px) {
+      width: 250px;
+      height: 300px;
+    }
   }
 </style>

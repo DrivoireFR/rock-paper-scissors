@@ -57,6 +57,22 @@ export default {
       text-transform: uppercase;
       padding: 10px 30px;
       letter-spacing: 2px;
+      cursor: pointer;
+      transition: color .2s, background-color .2s;
+
+      &:hover {
+        background: $white;
+        color: $dark-text;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      .rules-btn {
+        position: absolute;
+        right: 50%;
+        bottom: 50px;
+        transform: translate(50%, -50%);
+      }
     }
   }
 </style>

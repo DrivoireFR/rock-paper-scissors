@@ -68,6 +68,24 @@ export default {
             text-align: center;
         }
     }
+
+    @media screen and(max-width: 700px) {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+
+        img {
+            width: 90px;
+        }
+
+        .score__result {
+            width: 100px;
+
+            &__title {
+                line-height: 1;
+            }
+        }
+    }
 }
 
 </style>
