@@ -1,6 +1,6 @@
 <template>
   <div class="results">
-        <div class="side player-sider">
+        <div class="side player-side">
             <h2 class="side__title">You picked</h2>
             <Coin :name="player.move" :icon="player.icon"/>
         </div>
@@ -41,25 +41,45 @@ export default {
     created() {
         if(this.player.move == "rock" && this.computer.move == "scissors") {
             this.result = 'You win'
-            // this.$store.commit('increaseScore')
+            this.$store.commit('increaseScore')
         } else if ( this.player.move == "scissors" && this.computer.move == "paper" ) {
             this.result = 'You win'
-            // this.$store.commit('increaseScore')
+            this.$store.commit('increaseScore')
         } else if ( this.player.move == "paper" && this.computer.move == "rock" ) {
             this.result = 'You win'
-            // this.$store.commit('increaseScore')
+            this.$store.commit('increaseScore')
         } else if ( this.player.move == "paper" && this.computer.move == "scissors" ) {
             this.result = 'You lose'
-            // this.$store.commit('increaseScore')
+            if( this.$store.state.score > 0 ) {
+                this.$store.commit('decreaseScore')
+            }
         } else if ( this.player.move == "rock" && this.computer.move == "paper" ) {
             this.result = 'You lose'
-            // this.$store.commit('increaseScore')
+            if( this.$store.state.score > 0 ) {
+                this.$store.commit('decreaseScore')
+            }
         } else if ( this.player.move == "scissors" && this.computer.move == "rock" ) {
             this.result = 'You lose'
-            // this.$store.commit('increaseScore')
+            if( this.$store.state.score > 0 ) {
+                this.$store.commit('decreaseScore')
+            }
         } else if ( this.player.move == this.computer.move ) {
             this.result = "Draw"
         }
+    },
+    watch: {
+        result: function (val) {
+         if( val == "You win" ) {
+             document.querySelector('.player-side').classList.add('victory')
+             document.querySelector('.computer-side').classList.remove('victory')
+         } else if ( val == "You lose") {
+            document.querySelector('.player-side').classList.remove('victory')
+            document.querySelector('.computer-side').classList.add('victory')
+            console.log('you lose')
+         } else if ( val == "Draw" ){
+             console.log('it s a draw')
+         }
+        },
     }
 }
 </script>
@@ -90,11 +110,24 @@ export default {
     }
 
     .side {
+        position: relative;
         &__title {
             margin-bottom: 100px;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-align: center;
+        }
+
+        .victory {
+            .coin {
+                .flag {
+                    position: absolute;
+                    z-index: -1;
+                    width: 150%;
+                    height: 150%;
+                    background: red;
+                }
+            }
         }
     }
 

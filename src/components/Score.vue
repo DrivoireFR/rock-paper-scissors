@@ -8,7 +8,7 @@
             <div class="score__result__content">
                 <h2 class="score__result__title">score</h2>
 
-                <p class="score__result__number">10</p>
+                <p class="score__result__number">{{ score }}</p>
             </div>
       </div>
   </div>
@@ -22,7 +22,7 @@ export default {
     },
     computed: {
       score() {
-          return 10
+          return this.$store.state.score
       }
     },
     data() {
