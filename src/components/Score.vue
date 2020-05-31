@@ -1,27 +1,34 @@
 <template>
   <div class="score">
-      <img src="@/assets/images/logo.svg" alt="">
+      <router-link :to="{name:'Match'}">
+        <img src="@/assets/images/logo.svg" alt="">
+      </router-link>
 
       <div class="score__result">
             <div class="score__result__content">
                 <h2 class="score__result__title">score</h2>
 
-                <p class="score__result__number">{{ score }}</p>
+                <p class="score__result__number">10</p>
             </div>
       </div>
   </div>
 </template>
 
 <script>
+
 export default {
     name: 'Score',
     props: {
     },
+    computed: {
+      score() {
+          return 10
+      }
+    },
     data() {
         return {
-            score: 10
         }
-    }
+    },
 }
 </script>
 

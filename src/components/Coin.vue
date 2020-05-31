@@ -85,9 +85,5 @@ export default {
         background: $paper-gradient;
       }
     }
-
-    img {
-
-    }
   }
 </style>
