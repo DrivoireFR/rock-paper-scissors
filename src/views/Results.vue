@@ -78,6 +78,8 @@ export default {
             document.querySelector('.player-side').classList.remove('victory')
             document.querySelector('.computer-side').classList.add('victory')
          } else if ( val == "Draw" ){
+            document.querySelector('.player-side').classList.remove('victory')
+            document.querySelector('.computer-side').classList.remove('victory')
          }
         },
     }
@@ -160,13 +162,14 @@ export default {
 
     @media screen and (max-width: 700px) {
         position: relative;
-        margin-top: 100px;
+        margin-top: 50px;
 
         .side {
             width: 50%;
 
             &__title {
                 width: 100%;
+                height: 80px;
                 margin-bottom: 30px;
             }
         }

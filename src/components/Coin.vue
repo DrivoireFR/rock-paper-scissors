@@ -131,5 +131,10 @@ export default {
         background: $paper-gradient;
       }
     }
+    
+    @media screen and(max-width: 400px) {
+      width: 110px;
+      height: 110px;
+    }
   }
 </style>

@@ -44,7 +44,9 @@ export default {
   }
 
   .app {
+    min-height: 100vh;
     padding: 30px;
+    overflow: hidden;
 
     .rules-btn {
       position: absolute;
